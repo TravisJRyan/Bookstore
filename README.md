@@ -10,4 +10,6 @@ The store supports the following operations:
 Customer: Registering, logging in/sessions, browsing books (searching by attributes), purchasing books, checking orders
 Manager: Logging in/sessions, searching for books, modifying book attributes, deleting books, inserting books, placing store orders, checking low stock books, checking store orders
 
+Database credentials have been removed for security. If you wish to use your own MySql database and run this project locally, simply fill out your credentials in the connection object in index.js (the schema and ER Diagram for my database is included), use "npm install" to get node modules, and run with "node index.js".
+
 Feel free to email me at tryan1996@gmail.com for any questions or concerns about this project.
