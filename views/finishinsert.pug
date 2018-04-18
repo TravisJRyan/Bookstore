@@ -1,0 +1,32 @@
+html
+  head
+    title="Book Inserted: "+title
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    .navbar-header
+      a.navbar-brand(href='/') Book Store
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/checkstock') Check Stock
+        li
+          a(href='/checkstoreorders') Orders
+        li
+          a(href='/insertbook') Insert Book
+        li
+          a(href='/modifypage') Modify Book
+        li
+          a(href='/deletepage') Delete Book
+  body
+    img.img-thumbnail.col-sm-2(src=image, alt=title, height='300px', width='150px')
+    .col-lg-6
+      h2="Your book has been inserted."
+      h4="Title: "+title
+      h4="Author: "+author
+      h4="ISBN: "+isbn
+      h4="Number of Copies: "+copies
+      h4="Price: $"+price
+      h4="Genre: "+genre
+      br
+    .col-lg-12

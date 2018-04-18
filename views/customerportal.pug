@@ -1,0 +1,40 @@
+html
+  head
+    title Search for a Book
+    link(rel='stylesheet', href='/style.css')
+    // BootStrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    div.navbar-header
+      a(href='/').navbar-brand Book Store
+      ul.nav.navbar-nav.navbar-right
+        li: a(href='/allbooks') Browse Books
+        li: a(href='/checkorders:false') Check Orders
+      ul.nav.navbar-nav.navbar-left
+        li: a(href='/logout') Logout
+.col-xs-6.col-xs-offset-3
+    h1="Welcome, "+firstName+"!"
+    h3 Check out some of these awesome, featured books:
+    .col-xs-6
+        a(href="/bookpage:978-0061124952")
+            .col-xs-2.col-xs-offset-2
+            img(src="https://images-na.ssl-images-amazon.com/images/I/61%2B3z1o4oUL._SX334_BO1,204,203,200_.jpg" height=125 width=85)
+            h3(style="text-align: center") Charlotte's Web
+    .col-xs-6
+        a(href="/bookpage:978-1501175466")
+            .col-xs-2.col-xs-offset-2
+            img(src="https://images-na.ssl-images-amazon.com/images/I/41aCsKYeDwL._SX326_BO1,204,203,200_.jpg" height=125 width=85)
+            h3(style="text-align: center") It
+    .col-xs-6
+        a(href="/bookpage:978-1503215672")
+            .col-xs-2.col-xs-offset-2
+            img(src="https://images-na.ssl-images-amazon.com/images/I/41fK2D8MUjL._SX331_BO1,204,203,200_.jpg" height=125 width=85)
+            h3(style="text-align: center") The Adventures of Tom Sawyer
+    .col-xs-6
+        a(href="/bookpage:978-7543321724")
+            .col-xs-2.col-xs-offset-2
+            img(src="https://images-na.ssl-images-amazon.com/images/I/51EqnTkohBL._SX307_BO1,204,203,200_.jpg" height=125 width=85)
+            h3(style="text-align: center") The Catcher in the Rye
+.col-xs-6.col-xs-offset-3
+    h3 Browse even more books 
+        a(href="/allbooks") here!

@@ -1,0 +1,39 @@
+html
+  head
+    title="Insert New Book"
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+
+nav.navbar.navbar-inverse
+  .navbar-header
+    a.navbar-brand(href='/') Book Store
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='/logout') Logout
+      li
+        a(href='/checkstock') Check Stock
+      li
+        a(href='/checkstoreorders') Orders
+      li
+        a(href='/insertbook') Insert Book
+      li
+        a(href='/modifypage') Modify Book
+      li
+        a(href='/deletepage') Delete Book
+
+body
+  h3 &nbsp;&nbsp;Search below for a book to modify
+    .col-xs-12(style='height:40px;')
+    .form-group.col-lg-6
+      label Search
+      input.form-control#myInput(type='search', placeholder='Search by Author, Title, ISBN, etc.')
+    .col-lg-7
+      button.btn-lg.btn-primary(onclick="performSearch()") Search
+    .col-xs-12(style='height:40px;')
+
+script.
+  function performSearch(){
+    searchTerm = document.getElementById("myInput").value;
+    window.location = "/modifysearch:"+searchTerm;
+  }

@@ -1,0 +1,64 @@
+// Set vars so we can use data from database. Strip quotes from the results.
+-bookAuthor= JSON.stringify(bookdata["Author"]).replace(/['"]+/g, '');
+-bookTitle= JSON.stringify(bookdata["Title"]).replace(/['"]+/g, '');
+-bookIsbn= JSON.stringify(bookdata["ISBN"]).replace(/['"]+/g, '');
+-bookNumber= JSON.stringify(bookdata["Number_In_Stock"]);
+-bookGenre= JSON.stringify(bookdata["Genre"]).replace(/['"]+/g, '');
+-bookPrice = JSON.stringify(bookdata["Price"].toFixed(2)).replace(/['"]+/g, '');
+-bookImage = JSON.stringify(bookdata["Image_Address"]).replace(/['"]+/g, '');
+
+html
+  head
+    title="Purchase: "+bookTitle
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    div.navbar-header
+      a(href='/').navbar-brand Book Store
+      ul.nav.navbar-nav.navbar-right
+        li: a(href='/allbooks') Browse Books
+        li: a(href='/checkorders:false') Check Orders
+      ul.nav.navbar-nav.navbar-left
+        li: a(href='/logout') Logout
+  body
+    img.img-thumbnail.col-sm-2(src=bookImage, alt=bookTitle, height='300px', width='150px')
+    .col-lg-6
+      h2="Purchase Order"
+      h4=bookTitle
+      h4#orderIsbn=bookIsbn
+      h4="$"+bookPrice
+      br
+    .form-group.col-sm-6
+        label Name
+        input.form-control#Name(type='First', placeholder='e.g. John Smith')
+        br
+        label Address Line 1
+        input.form-control#Address1(type='Address1', placeholder='382 Main Street')
+        br
+        label Address Line 2
+        input.form-control#Address2(type='Address2', placeholder='Topeka, Kansas')
+        br
+        label Credit Card Number
+        input.form-control#cardNumber(type='CardNumber', placeholder='e.g. 4111-1111-1111-1111')
+        br
+        label Shipping Choice
+        input.form-control#shippingChoice(type='Shipping', placeholder='Express or Ground Delivery')
+        br
+        button.btn-lg(onclick="completeOrder()")  Confirm
+
+script.
+  function completeOrder(){ // function completes the store's order
+
+    //Scrape appropriate values from user input form
+    var name = document.getElementById("Name").value;
+    var address1 = document.getElementById("Address1").value;
+    var address2 = document.getElementById("Address2").value;
+    var cardNumber = document.getElementById("cardNumber").value;
+    var orderIsbn = document.getElementById("orderIsbn").innerHTML;
+    var shippingChoice = document.getElementById("shippingChoice").value;
+    console.log(name+"\n"+address1+"\n"+address2+"\n"+cardNumber+"\n"+orderIsbn+"\n"+shippingChoice);
+
+    //Redirect to the order completion page
+    window.location = "/confirmbuybook:"+orderIsbn+"&"+name+"&"+address1+"&"+address2+"&"+cardNumber.substr(cardNumber.length - 4)+"&"+shippingChoice;
+  }

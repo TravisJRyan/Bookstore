@@ -1,0 +1,38 @@
+html
+  head
+    title=bookTitle
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    .navbar-header
+      a.navbar-brand(href='/') Book Store
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/checkstock') Check Stock
+        li
+          a(href='/checkstoreorders') Orders
+        li
+          a(href='/insertbook') Insert Book
+        li
+          a(href='/modifypage') Modify Book
+        li
+          a(href='/deletepage') Delete Book
+  body
+    img.img-thumbnail.col-sm-2(src=bookImage, height='300px', width='150px')
+    .col-lg-6
+      h2 Are you sure you want to delete the following book? This can <b>not</b> be undone.
+      h3=bookTitle
+      h4="by "+bookAuthor
+      h4=bookIsbn
+      h4="Genre: "+bookGenre
+      h4="Number in Stock: "+bookCopies
+      h4="$"+bookPrice
+      br
+      a(href='/confirmdelete:'+currentIsbn)
+        button.btn-lg.btn-danger  Delete
+    .col-lg-12
+      h3
+        | Want to return 
+        a(href='/') home
+        | ?

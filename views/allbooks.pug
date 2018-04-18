@@ -1,0 +1,49 @@
+html
+  head
+    title CS351 Book Store
+    link(rel='stylesheet', href='/style.css')
+    // BootStrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    div.navbar-header
+      a(href='/').navbar-brand Book Store
+      ul.nav.navbar-nav.navbar-right
+        li: a(href='/allbooks') Browse Books
+        li: a(href='/checkorders:false') Check Orders
+      ul.nav.navbar-nav.navbar-left
+        li: a(href='/logout') Logout
+  body(style='background-color: #F4F2F1')
+    .form-group.col-lg-6
+      h2 Search
+      input.form-control#myInput(type='search', placeholder='Search by Author, Title, ISBN, etc.')
+    .col-lg-7
+      button.btn-lg.btn-primary(onclick="performSearch()") Search
+    .col-xs-12(style='height:40px;')
+    h3.col-xs-6 Or browse books below:
+    - var n = 0
+    table.table.table-striped
+      tr
+        th Title
+        th Author
+        th ISBN
+        th Genre
+      -for(var i = 0; i<JSON.parse(data).length; i++) // Populate entire table with all book data from query
+        tr
+          -currentTitle = JSON.parse(data)[i]["Title"];
+          -currentIsbn = JSON.parse(data)[i]["ISBN"];
+          td
+            a(href='/bookpage:'+currentIsbn)
+                img(src=JSON.parse(data)[i]["Image_Address"], height=100, width=70)
+                h4=currentTitle
+          td
+            h4=JSON.parse(data)[i]["Author"]
+          td
+            h4=JSON.parse(data)[i]["ISBN"]
+          td 
+            h4=JSON.parse(data)[i]["Genre"]
+
+script.
+  function performSearch(){
+    searchTerm = document.getElementById("myInput").value;
+    window.location = "/search:"+searchTerm;
+  }

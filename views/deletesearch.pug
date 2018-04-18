@@ -1,0 +1,61 @@
+html
+  head
+    title Search for a Book
+    link(rel='stylesheet', href='/style.css')
+    // BootStrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  body(style='background-color: #F4F2F1')
+
+nav.navbar.navbar-inverse
+  .navbar-header
+    a.navbar-brand(href='/') Book Store
+    ul.nav.navbar-nav.navbar-right
+      li
+        a(href='/logout') Logout
+      li
+        a(href='/checkstock') Check Stock
+      li
+        a(href='/checkstoreorders') Orders
+      li
+        a(href='/insertbook') Insert Book
+      li
+        a(href='/modifypage') Modify Book
+      li
+        a(href='/deletepage') Delete Book
+
+body
+    .form-group.col-lg-6
+      label Search
+      input.form-control#myInput(type='search', placeholder='Search by Author, Title, ISBN, etc.')
+    .col-lg-7
+      button.btn-lg.btn-primary(onclick="performSearch()") Search
+    .col-xs-12(style='height:40px;')
+    h3.col-xs-6 The following results were found. Choose one to delete.
+    - var n = 0
+    table.table.table-striped
+      tr
+        th Title
+        th Author
+        th ISBN
+        th Genre
+      -for(var i = 0; i<JSON.parse(data).length; i++) // Populate entire table with all book data from query
+        tr
+          -currentTitle = JSON.parse(data)[i]["Title"];
+          -currentIsbn = JSON.parse(data)[i]["ISBN"];
+          td
+              img(src=JSON.parse(data)[i]["Image_Address"], height=100, width=70)
+              h4=currentTitle
+              a(href="/deletebook:"+currentIsbn)
+                  button.btn-danger Delete
+          td
+            h4=JSON.parse(data)[i]["Author"]
+          td
+            h4=JSON.parse(data)[i]["ISBN"]
+          td 
+            h4=JSON.parse(data)[i]["Genre"]
+
+script.
+  function performSearch(){
+    searchTerm = document.getElementById("myInput").value;
+    window.location = "/deletesearch:"+searchTerm;
+  }

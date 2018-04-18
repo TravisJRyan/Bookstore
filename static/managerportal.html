@@ -1,0 +1,63 @@
+<head>
+    <title>Manager Portal</title>
+    <link rel = "stylesheet" href = "style.css">
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+</head>
+
+<nav class="navbar navbar-inverse">
+        <div class="navbar-header"><a href="/" class="navbar-brand">Book Store</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/checkstock">Check Stock</a></li>
+            <li><a href="/insertbook">Insert Book</a></li>
+            <li><a href="/modifybook">Modify Book</a></li>
+            <li><a href="/deletebook">Delete Book</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-left">
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+        </div>
+</nav>
+
+<body style="background-color: #F4F2F1">
+    <h3> &nbsp; Welcome, Manager! Here are some options for you: </h3>
+    </br>
+    
+    <div class="col-xs-12">
+        <a href="/checkstock">
+            <button type="button" class="btn-primary btn-xlarge center-block">
+                Check Stock
+            </button>
+        </a>
+    </div>
+
+    <div class="col-xs-12" style="height:50px;"></div>
+
+    <div class="col-xs-12"> 
+        <a href="/insertbook">
+            <button type="button" class="btn-primary btn-xlarge center-block">
+                Insert New Book
+            </button>
+        </a>
+    </div>
+
+    <div class="col-xs-12" style="height:50px;"></div>
+
+    <div class="col-xs-12"> 
+            <button type="button" class="btn-primary btn-xlarge center-block">
+                Modify Book
+        </button>
+    </div>
+    
+    <div class="col-xs-12" style="height:50px;"></div>
+    
+    <div class="col-xs-12"> 
+        <a href="/deletepage">
+            <button type="button" class="btn-primary btn-xlarge center-block">
+                Delete Book
+            </button>
+        </a>
+    </div>
+</body>

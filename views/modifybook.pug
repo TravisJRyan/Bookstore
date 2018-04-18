@@ -1,0 +1,64 @@
+html
+  head
+    title=bookTitle
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    .navbar-header
+      a.navbar-brand(href='/') Book Store
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='/logout') Logout
+        li
+          a(href='/checkstock') Check Stock
+        li
+          a(href='/checkstoreorders') Orders
+        li
+          a(href='/insertbook') Insert Book
+        li
+          a(href='/modifypage') Modify Book
+        li
+          a(href='/deletepage') Delete Book
+  body
+    img.img-thumbnail.col-sm-2(src=bookImage, height='300px', width='150px')
+    .col-lg-6
+        body
+    .col-lg-7
+      h3 Make changes below:
+      br
+    .form-group.col-sm-6
+        label ISBN
+        h4#isbn=bookIsbn
+        br
+        label Title
+        input.form-control#Title(value=bookTitle)
+        br
+        label Author
+        input.form-control#Author(value=bookAuthor)
+        br
+        label Genre
+        input.form-control#Genre(value=bookGenre)
+        br
+        label Number of Copies
+        input.form-control#Copies(value=bookCopies)
+        br
+        label Cover Image Address
+        input.form-control#Image(value=bookImage)
+        br
+        label Price
+        input.form-control#Price(value="$"+bookPrice.toFixed(2))
+        br
+        button.btn-lg.btn-success(onclick="finishModify()") Confirm
+
+script.
+    function finishModify(){
+            isbn = document.getElementById("isbn").innerHTML;
+            title = document.getElementById("Title").value;
+            author = document.getElementById("Author").value;
+            genre = document.getElementById("Genre").value;
+            copies = document.getElementById("Copies").value;
+            image = encodeURIComponent(document.getElementById("Image").value);
+            price = document.getElementById("Price").value.slice(1);
+            window.location = "/finishmodify:"+isbn+"&"+author+"&"+title+"&"+genre+"&"+copies+"&"+image+"&"+price;
+    }

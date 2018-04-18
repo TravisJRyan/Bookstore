@@ -1,0 +1,36 @@
+// Set vars so we can use data from database. Strip quotes from the results.
+-bookAuthor= JSON.stringify(bookdata["Author"]).replace(/['"]+/g, '');
+-bookTitle= JSON.stringify(bookdata["Title"]).replace(/['"]+/g, '');
+-bookIsbn= JSON.stringify(bookdata["ISBN"]).replace(/['"]+/g, '');
+-bookNumber= JSON.stringify(bookdata["Number_In_Stock"]);
+-bookGenre= JSON.stringify(bookdata["Genre"]).replace(/['"]+/g, '');
+-bookPrice = JSON.stringify(bookdata["Price"].toFixed(2)).replace(/['"]+/g, '');
+-bookImage = JSON.stringify(bookdata["Image_Address"]).replace(/['"]+/g, '');
+
+html
+  head
+    title=bookTitle
+    link(rel='stylesheet', href='/style.css')
+    //Bootstrap
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+  nav.navbar.navbar-inverse
+    div.navbar-header
+      a(href='/').navbar-brand Book Store
+      ul.nav.navbar-nav.navbar-right
+        li: a(href='/allbooks') Browse Books
+        li: a(href='/checkorders:false') Check Orders
+      ul.nav.navbar-nav.navbar-left
+        li: a(href='/logout') Logout
+  body
+    img.img-thumbnail.col-sm-2(src=bookImage, alt=bookTitle, height='300px', width='150px')
+    .col-lg-6
+      h2=bookTitle
+      h4="by "+bookAuthor
+      h4=bookIsbn
+      br
+      h3="Genre: "+bookGenre
+      h3="Number in Stock: "+bookNumber
+      h3="$"+bookPrice
+      br
+      a(href='/buybook:'+currentIsbn)
+        button.btn-lg  Buy Now

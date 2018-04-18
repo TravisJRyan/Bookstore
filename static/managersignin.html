@@ -1,0 +1,27 @@
+<head>
+    <title>Manager Sign In</title>
+    <link rel = "stylesheet" href = "/style.css">
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+</head>
+
+<h1 id="headerText"> &nbsp; Welcome, Manager!</h1>
+<hr>
+<body>
+    <form class="col-lg-6" action="/managerlogin" method="POST">
+        <div class="form-group">
+            <label>Username</label>
+            <input type="username" class="form-control" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <div class="col-lg-7">
+        <h3> Want to return <a href="/">home</a>? </h3>
+    </div>
+</body>
