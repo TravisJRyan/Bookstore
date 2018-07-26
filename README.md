@@ -1,7 +1,7 @@
 # Bookstore
 A full-stack online bookstore built for my CS351 (Database Management Systems) course that I have been expanding as a personal project.
 
-Technologies I Used: Node.js (Express and other tools), MySql, Pug, Bootstrap 3, HTML5
+Technologies I Used: Node.js, Express, MySql, Pug, Bootstrap 3, HTML5/CSS3/JS
 
 To my knowledge, the website is up-to-date here: https://cs351bookstore-ckqtghjksz.now.sh/
 (User accounts can be registered, but manager accounts can only be made through the database.)
